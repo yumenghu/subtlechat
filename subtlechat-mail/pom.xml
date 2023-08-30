@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>top.javahai</groupId>
-    <artifactId>subtlechat-mailserver</artifactId>
+    <artifactId>subtlechat-mail</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>subtlechat-mailserver</name>
+    <name>subtlechat-mail</name>
     <description>the mail server project for SubtleChat application</description>
 
     <properties>
@@ -62,6 +62,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                </configuration>
             </plugin>
         </plugins>
     </build>

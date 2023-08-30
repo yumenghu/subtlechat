@@ -1,0 +1,53 @@
+version: "2"
+services:
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: '123456'
+      MYSQL_DATABASE: 'moyu'
+    image: "mysql:5.7"
+    restart: always
+    volumes:
+      - "./docker/mysql/data/:/var/lib/mysql"
+      - "./docker/mysql/conf/my.cnf:/etc/my.cnf"
+      - "./docker/mysql/init:/docker-entrypoint-initdb.d"
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis:6.0.6
+    restart: always
+    ports:
+      - "6379:6379"
+    privileged: true
+    command: redis-server /etc/redis/config/redis.conf --appendonly yes
+    volumes:
+      - "./docker/redis/data:/data"
+      - "./docker/redis/config:/etc/redis/config"
+
+  rabbitmq:
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_VHOST: "/"
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "123456"
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "4369:4369"
+      - "25672:25672"
+      - "15692:15692"
+    volumes:              
+      - "./docker/rabbitmq/data:/var/lib/rabbitmq"    
+
+  mail_service:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    build: ./subtlechat-mail/
+    restart: always
+
+  web_service:
+    build: ./subtlechat-web/
+    restart: always
+      

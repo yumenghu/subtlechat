@@ -12,6 +12,7 @@
     <artifactId>subtlechat</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>subtlechat</name>
+    <packaging>pom</packaging>
     <description>the back-end project for SubleChat application</description>
 
     <properties>
@@ -41,14 +42,4 @@
             </exclusions>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

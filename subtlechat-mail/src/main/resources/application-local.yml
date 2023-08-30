@@ -9,20 +9,20 @@ spring:
     protocol: smtp
     default-encoding: UTF-8
     #邮箱名
-    username:
+    username: yumenghu@foxmail.com
     #申请的授权码
-    password:
+    password: kvrjjwufpanmibcb
     port: 587
     properties:
       mail.stmp.socketFactory.class: javax.net.ssl.SSLSocketFactory
       mail.debug: true
   #RabbitMQ的配置
   rabbitmq:
-    host:
-    port:
-    username:
-    password:
-    virtual-host: /subtlechat
+    host: localhost
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: /
     #开启手动确认是否消息消费成功
     listener:
       simple:
@@ -31,6 +31,6 @@ spring:
   #Redis的配置
   redis:
     database: 0
-    password:
-    host:
-    port:
+    password: 12345678
+    host: localhost
+    port: 6379
